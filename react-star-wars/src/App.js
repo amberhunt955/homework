@@ -1,10 +1,14 @@
-import './App.css';
+import StarshipCard from "./components/StarshipCard";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <h1>React Star Wars</h1>
-    </div>
+    <>
+      <h1>Starship Fleet</h1>
+      <div className="cards-container">
+        <StarshipCard />
+      </div>
+    </>
   );
 }
 

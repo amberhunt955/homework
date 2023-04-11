@@ -5,8 +5,9 @@ function Index(props) {
 
   return (
     <div>
-      <h1>Your Playlists</h1>
+      <h1>Welcome to the Page of Fun</h1>
 
+      <h2> Your Playlists</h2>
       <ol>
         {playlists.map((playlist, i) => {
           playlist.i = i;
@@ -18,6 +19,8 @@ function Index(props) {
           );
         })}
       </ol>
+
+      <a href="/hmm">Where does this link go?</a>
     </div>
   );
 }

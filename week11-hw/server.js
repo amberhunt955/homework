@@ -9,13 +9,21 @@ app.engine('jsx', require('jsx-view-engine').createEngine())
 
 //* routes
 /**
- * Home page route
+ * Route - home page
  */
 app.get('/', (req, res) => {
     res.render('Index', {playlists})
 })
+
 /**
- * Show song route
+ * Route - fun route
+ */
+app.get('/hmm', (req, res) => {
+    res.render('Fun')
+})
+
+/**
+ * Route - show song
  */
 app.get('/:indexOfPlaylistsArray/:playlistName/:indexOfSongsArray', (req, res) => {
     res.render('ShowSong', {
@@ -23,14 +31,21 @@ app.get('/:indexOfPlaylistsArray/:playlistName/:indexOfSongsArray', (req, res) =
         song: playlists[req.params.indexOfPlaylistsArray].songs[req.params.indexOfSongsArray]
     })
 })
+
 /**
- * Show playlist route
+ * Route - show playlist
  */
 app.get('/:indexOfPlaylistsArray/:playlistName', (req, res) => {
     res.render('ShowPlaylist', {
         playlist: playlists[req.params.indexOfPlaylistsArray]})
 })
 
+/**
+ * Route - 404
+ */
+app.get('*', (req, res) => {
+    res.render('404') 
+ })
 
 //* listen at port
 const PORT = 3000;

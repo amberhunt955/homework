@@ -20,7 +20,11 @@ function Index(props) {
         })}
       </ol>
 
-      <a href="/hmm">Where does this link go?</a>
+      <a href="/new">Add a new playlist</a> <br/><br/>
+
+      <a href="/hmm">Where does this link go?</a> <br/><br/>
+
+      <a href="/bio">Who made this site?</a>
     </div>
   );
 }

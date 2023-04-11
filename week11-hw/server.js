@@ -2,28 +2,72 @@ const express = require('express');
 const playlists = require('./models/playlists');
 const app = express();
 
-
 //& === CONFIGURATION
 app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 
-//* routes
+//& === MIDDLEWARE
+app.use((req, res, next) => {
+    console.log(req.url);
+    next();
+  });
+  
+  app.use(express.urlencoded({ extended: false }));
+
+//& === ROUTES
 /**
- * Route - home page
+ * 1 - MAIN INDEX
  */
 app.get('/', (req, res) => {
     res.render('Index', {playlists})
 })
 
 /**
- * Route - fun route
+ * 2 - POST NEW PLAYLIST
+ */
+app.post('/', (req, res) => {
+    console.log(req.body);
+    playlists.push(req.body);
+    res.redirect('/')
+})
+
+/**
+ * 3 - CREATE NEW PLAYLIST FORM
+ */
+app.get('/new', (req, res) => {
+    res.render('NewPlaylist')
+})
+
+/**
+ * 4 - FUN ROUTE
  */
 app.get('/hmm', (req, res) => {
     res.render('Fun')
 })
 
 /**
- * Route - show song
+ * 5 - BIO ROUTE
+ */
+app.get('/bio', (req, res) => {
+    res.render('Bio')
+})
+
+/**
+ * 6 - PAGE ROUTE
+ */
+app.get('/page', (req, res) => {
+    res.render('Page')
+})
+
+/**
+ * 7 - CREATE NEW SONG FORM
+ */
+app.get('/:indexOfPlaylistsArray/:playlistName/new', (req, res) => {
+    res.render('NewSong')
+})
+
+/**
+ * 8 - SHOW SONG ROUTE
  */
 app.get('/:indexOfPlaylistsArray/:playlistName/:indexOfSongsArray', (req, res) => {
     res.render('ShowSong', {
@@ -33,7 +77,7 @@ app.get('/:indexOfPlaylistsArray/:playlistName/:indexOfSongsArray', (req, res) =
 })
 
 /**
- * Route - show playlist
+ * 9 - SHOW PLAYLIST
  */
 app.get('/:indexOfPlaylistsArray/:playlistName', (req, res) => {
     res.render('ShowPlaylist', {
@@ -41,7 +85,15 @@ app.get('/:indexOfPlaylistsArray/:playlistName', (req, res) => {
 })
 
 /**
- * Route - 404
+ * 10 - NEW SONG SUBMISSION
+ */
+app.post('/:indexOfPlaylistsArray/:playlistName', (req, res) => {
+    console.log(req.body);
+    res.redirect('/page')
+})
+
+/**
+ * 11 - 404 PAGE NOT FOUND
  */
 app.get('*', (req, res) => {
     res.render('404') 

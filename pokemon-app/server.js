@@ -12,21 +12,21 @@ app.engine("jsx", require("jsx-view-engine").createEngine());
  * INDEX ROUTE
  */
 app.get('/', (req, res) => {
-    res.render('Index')
+    res.send(`<h1>Welcome to the Pokemon App!</h1><a href='/pokemon'>Go to Pokemon</a>`)
 })
 
 /**
- * POKEMON JSON ROUTE
+ * POKEMON INDEX ROUTE
  */
 app.get('/pokemon', (req, res) => {
-    res.send(pokemon);
+    res.render('Index', {pokemon});
 })
 
 /**
  * SHOW ROUTE
  */
-app.get('/show', (req, res) => {
-    res.render('Show')
+app.get('/pokemon/:id', (req, res) => {
+    res.send(req.params.id)
 })
 
 //& === LISTEN AT DESIGNATED PORT

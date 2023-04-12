@@ -14,7 +14,7 @@ function Index(props) {
 
           return (
             <li key={i}>
-              <a href={`/pokemon/${player.name}`}>{player.name}</a>
+              <a href={`/pokemon/${i}`}>{player.name}</a>
             </li>
           );
         })}

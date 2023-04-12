@@ -26,7 +26,7 @@ app.get('/pokemon', (req, res) => {
  * SHOW ROUTE
  */
 app.get('/pokemon/:id', (req, res) => {
-    res.send(req.params.id)
+    res.render('Show', {player: pokemon[req.params.id]})
 })
 
 //& === LISTEN AT DESIGNATED PORT

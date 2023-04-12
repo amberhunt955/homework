@@ -3,7 +3,7 @@ const React = require('react');
 function Index() {
     return (
         <div>
-            <h1>Index Page</h1>
+            <h1>Welcome to the Pokemon App!</h1>
         </div>
     )
 }

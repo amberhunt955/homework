@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const pokemon = require('./models/Pokemon');
+
 //& === CONFIGURATION
 app.set("view engine", "jsx");
 app.engine("jsx", require("jsx-view-engine").createEngine());
@@ -11,6 +13,13 @@ app.engine("jsx", require("jsx-view-engine").createEngine());
  */
 app.get('/', (req, res) => {
     res.render('Index')
+})
+
+/**
+ * POKEMON JSON ROUTE
+ */
+app.get('/pokemon', (req, res) => {
+    res.send(pokemon);
 })
 
 /**

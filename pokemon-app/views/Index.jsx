@@ -8,17 +8,19 @@ function Index(props) {
       <h1>Available Pokemon</h1>
 
       <ul>
-        {pokemon.map((player, i) => {
+        {pokemon.map((player) => {
           // capitalize first char of player name
           player.name = player.name.charAt(0).toUpperCase() + player.name.slice(1);
 
           return (
-            <li key={i}>
-              <a href={`/pokemon/${i}`}>{player.name}</a>
+            <li key={player._id}>
+              <a href={`/pokemon/${player._id}`}>{player.name}</a>
             </li>
           );
         })}
       </ul>
+
+      <a href="/pokemon/new">Create New Pokemon</a><br/><br/>
 
       <a href="/">Go Home</a>
     </div>

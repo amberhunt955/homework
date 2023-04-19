@@ -1,19 +1,19 @@
 const React = require('react');
 
 function Show(props) {
-    const { player } = props;
+    const { pokemon } = props;
 
-    player.name = player.name.charAt(0).toUpperCase() + player.name.slice(1);
+    pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
-    player.img += '.jpg';
+    pokemon.img += '.jpg';
 
     return (
         <div>
             <h1>Gotta Catch Em All</h1>
 
-            <h2>{player.name}</h2>
+            <h2>{pokemon.name}</h2>
 
-            <img src={player.img} alt={player.name}/>
+            <img src={pokemon.img} alt={pokemon.name}/>
 
             <br/><br/>
 
